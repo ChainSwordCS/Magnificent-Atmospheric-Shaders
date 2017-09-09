@@ -57,11 +57,24 @@ vec4 getNoise3D(vec3 coord) {
 	return mix(noisel, noiseh, fr.z);
 }
 
+/*
+
+//Unused, only for testing
+float groundFog(vec3 worldPos) {
+    float density = getNoise3D(worldPos / vec3(6.0, 6.0, 6.0)).r;
+    density *= exp(-(worldPos.y - 70.0) / 3.0);
+    density = clamp(density, 0.002, 50.0);
+    const float maxHeight = 150.0, minHeight = 90.0;
+    density *= smoothstep(minHeight, minHeight + abs(maxHeight - minHeight) * 0.1, worldPos.y) * smoothstep(maxHeight, minHeight + abs(maxHeight - minHeight)*0.9, worldPos.y);
+    return density * 1.0;
+}
+*/
+
 float groundFog(vec3 worldPos) {
 	worldPos.y -= 70.0;
 	float density = vcnoise(worldPos / vec3(6.0, 3.0, 6.0));
-	density *= exp(-worldPos.y / 8.0);
-	density = clamp(density, 0.002, 50.0);
+	density *= exp(-worldPos.y / 5.0);
+	density = clamp(density, 0.002, 3.0);
 	return density * 1.0;
 }
 
