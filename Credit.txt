@@ -1,0 +1,7 @@
+Thank you too...
+
+Zombye for making example projects to help me get a grasp (Not learn) how things are done.
+Jake for helping me add lambertian, fixing shadows on the sky, helping me fix my horrid tonemap and helping me make a better fog scattering thingy.
+DWP for his optimized macros and fixing the VL filter.
+Capt Tatsu for allowing me to use his noise.
+Robin for helping me make soft shadows.
