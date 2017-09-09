@@ -45,7 +45,7 @@ void main() {
     float depth = texture2D(depthtex1, texCoord.st).r;
 
 	#ifdef VolumetricLight
-	color.rgb += filterVL(texCoord) * (phaseFunc(dot(viewVector, lightVector), 0.2) + rayleighPhase(dot(viewVector, sunVector)) * (js_getScatter(vec3(0.0), lightVector, lightVector, 0) + js_getScatter(vec3(0.0), upVector, lightVector, 0))) / 240.0;
+	color.rgb += filterVL(texCoord) * (phaseFunc(dot(viewVector, lightVector), 0.5) + rayleighPhase(dot(viewVector, sunVector)) * (js_getScatter(vec3(0.0), lightVector, lightVector, 0) + js_getScatter(vec3(0.0), upVector, lightVector, 0))) / 340.0;
 	#endif
 
 	gl_FragData[0] = vec4(color, 1.0);

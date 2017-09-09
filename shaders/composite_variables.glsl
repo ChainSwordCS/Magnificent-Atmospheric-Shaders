@@ -79,7 +79,7 @@ const bool colortex0MipmapEnabled = true;
 float getLuma(in vec3 colour) { return dot(colour, vec3(0.2125, 0.7154, 0.0721)); }
 vec3 colourSaturation(in vec3 colour, in float saturation) { return colour * saturation + getLuma(colour) * (1.0 - saturation); }
 
-#define DIRECT_MOONLIGHT_SATURATION 0.0
+#define DIRECT_MOONLIGHT_SATURATION 0.05
 
   vec3 moonLight = colourSaturation(vec3(0.0, 0.0, 1.0), DIRECT_MOONLIGHT_SATURATION) * 0.5;
 
