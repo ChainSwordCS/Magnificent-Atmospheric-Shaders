@@ -39,7 +39,7 @@
         vec2( 0.45471010, -0.78973980)
     );
 
-vec3 getShading(in vec3 color, in vec3 world, in vec2 surface) {
+vec3 getShading(in vec3 color, in vec3 world, in vec2 surface, in vec3 normal) {
 
     mat4 shadowMVP = shadowProjection * shadowModelView;
     vec4 shadowPos  = shadowMVP * vec4(world, 1.0);
@@ -61,7 +61,7 @@ vec3 getShading(in vec3 color, in vec3 world, in vec2 surface) {
     vec3 lighting = vec3(0.0);
 
     // direct
-    lighting = (0.0045 * js_getScatter(vec3(0.0), lightVector, lightVector, 0) * max(0.0, dot(fNormalize(texture2D(colortex1, texCoord).xyz * 2.0 - 1.0), lightVector))) * shadows + lighting;
+    lighting = (0.0045 * js_getScatter(vec3(0.0), lightVector, lightVector, 0) * max(0.0, dot(normal, lightVector))) * shadows + lighting;
 
     // ambient
     lighting = (8.3 * js_getScatter(vec3(0.0), upVector, lightVector, 0) * (0.35 * timeVector.x + 25.5 * timeVector.y + 0.6 * timeVector.z) ) * (pow(surface.g, 7.0)) + lighting;

@@ -90,7 +90,7 @@ vec3 colourSaturation(in vec3 colour, in float saturation) { return colour * sat
   const int colortex1Format = RGB16;
   const int colortex2Format = RGB16;
   const int colortex5Format = R16F;
-  const int colortex6Format = R16F;
+  const int colortex6Format = RGB16;
 */
 
 /* Macros */

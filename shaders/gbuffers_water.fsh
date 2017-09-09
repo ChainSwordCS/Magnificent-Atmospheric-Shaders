@@ -17,6 +17,7 @@ uniform sampler2D tex;
 varying vec2 lmcoord;
 varying vec3 normal;
 varying vec4 tint;
+varying vec3 world;
 
 void main() {
 
@@ -24,13 +25,7 @@ vec4 color = texture2D(tex, texCoord.st);
 
 color.rgb = pow(color.rgb, vec3(2.2));
 
-vec4 view = vec4(vec3(gl_FragCoord.st / vec2(viewWidth, viewHeight), gl_FragCoord.z) * 2.0 - 1.0, 1.0);
-if(isEyeInWater == 1) view.xy *= gbufferProjection[1][1] * tan(atan(1.0 / gbufferProjection[1][1]) * 0.85);
-view /= view.w;
-vec4 world = gbufferModelViewInverse * view;
-world /= world.w;
-
-color.rgb = getShading(color.rgb, world.xyz, lmcoord);
+color.rgb = getShading(color.rgb, world.xyz, lmcoord, normal);
 
 color *= tint;
 

@@ -36,7 +36,7 @@ void main() {
     //This line is useless, I was screwing around and testing stuff.
     //if(!getLandMask(depth)) color.rgb *= js_getScatter(vec3(0.0), fNormalize(view.xyz), lightVector, 0);
 
-    if(getLandMask(depth)) color.rgb = getShading(color.rgb, world.xyz, surface.rg);
+    if(getLandMask(depth)) color.rgb = getShading(color.rgb, world.xyz, surface.rg, fNormalize(texture2D(colortex1, texCoord).xyz * 2.0 - 1.0));
     //if(getLandMask(depth)) color.rgb = getShading2(color.rgb, world.xyz, surface.rg);
 
     color = mix(color, texture2D(colortex6, texCoord), texture2D(colortex7, texCoord).r);
