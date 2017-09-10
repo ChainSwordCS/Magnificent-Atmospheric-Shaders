@@ -1,3 +1,5 @@
+#define SeaHeight 70.0 //[70.0 60.0 50.0 40.0 30.0 20.0 10.0 1.0]
+
 float getnoise(vec2 pos){
     return fract(sin(dot(pos, vec2(12.9898, 4.1414))) * 43758.5453);
 }
@@ -71,7 +73,7 @@ float groundFog(vec3 worldPos) {
 */
 
 float groundFog(vec3 worldPos) {
-	worldPos.y -= 70.0;
+	worldPos.y -= SeaHeight;
 	float density = vcnoise(worldPos / vec3(6.0, 3.0, 6.0));
 	density *= exp(-worldPos.y / 5.0);
 	density = clamp(density, 0.002, 3.0);

@@ -28,6 +28,9 @@ uniform float viewWidth, viewHeight;
 uniform float far, near;
 uniform float frameTime;
 uniform float rainStrength;
+uniform float centerDepthSmooth;
+
+const float centerDepthHalflife      = 5.0;         // In ticks.
 
 uniform int isEyeInWater;
 uniform int worldTime;

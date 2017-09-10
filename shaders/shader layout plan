@@ -2,6 +2,9 @@ Composite = AO and GI
 Composite1 = Shading, sky effects, caustics, shadowspace caustics, algae and subsurface
 Composite2 = Godrays/VL and refraction
 Composite3 = Reflections
-Composite4 = Filter reflections
-Composite5 = Lens/eye system
+EYE SYSTEM
+Composite4 = Filter Reflections, DOF
+Composite5 = Motion blur
+Composite6 = Bloom
+END OF EYE SYSTEM
 Final = Everything else

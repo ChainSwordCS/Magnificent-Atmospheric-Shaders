@@ -18,13 +18,7 @@ float get8x8Dither(in vec2 coord)
 	return dither01;
 }
 
-float nearDist = 2.0 * near;
-float nearToFar = far - near;
-float farToNear = far + near;
-
-float getLinearDepth(in float depth) {
-	return nearDist / (farToNear - depth * nearToFar);
-}
+#include "linearDepth.glsl"
 
 vec3 filterVL(vec2 coord) {
 	const float range = 2.5;

@@ -9,6 +9,12 @@ const bool colortex3MipmapEnabled = true;
 
 //#define VolumetricLight
 
+vec3 noonLight = vec3(.1, .7, .8) * 0.7;
+vec3 horizonLight = vec3(.1, 1.95, .7) * 0.4;
+vec3 nightColor = vec3(.1, .6, .9) * 0.2;
+
+vec3 waterColor = (noonLight * timeVector.x + noonLight * nightColor * timeVector.y + horizonLight * timeVector.z);
+
 #include "lib/light/vl_filter.glsl"
 
 #define getLandMask(x) (x < (1.0 - near / far / far))
@@ -45,7 +51,9 @@ void main() {
     float depth = texture2D(depthtex1, texCoord.st).r;
 
 	#ifdef VolumetricLight
+	if (isEyeInWater == 0) {
 	color.rgb += filterVL(texCoord) * (phaseFunc(dot(viewVector, lightVector), 0.5) + rayleighPhase(dot(viewVector, sunVector)) * (js_getScatter(vec3(0.0), lightVector, lightVector, 0) + js_getScatter(vec3(0.0), upVector, lightVector, 0))) / 370.0;
+	}
 	#endif
 
 	gl_FragData[0] = vec4(color, 1.0);

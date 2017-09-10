@@ -10,6 +10,8 @@
 
 vec3 blockLight = blackbody(2500) * 0.085;
 
+#include "offset.glsl"
+
 #include "lib/light/getShading.glsl"
 //#include "lib/light/getShadingEXPERIMENTAL.glsl"
 
