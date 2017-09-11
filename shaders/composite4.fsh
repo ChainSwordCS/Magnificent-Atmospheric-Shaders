@@ -19,7 +19,7 @@ vec3 DOF() {
 
     vec3 result = vec3(0.0);
     for (int i = 0; i < hex_offsets.length(); i++) {
-        result += texture2DLod(colortex0, hex_offsets[i] * coc + texCoord, log2(coc * 90 + 1)).rgb;
+        result += texture2DLod(colortex0, hex_offsets[i] * coc + texCoord, log2(coc * 100 + 1)).rgb;
     }
     result /= 119.0;
 

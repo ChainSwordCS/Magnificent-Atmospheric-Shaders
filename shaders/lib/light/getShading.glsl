@@ -1,5 +1,3 @@
-#define SHADOWBLUR_RADIUS 0.00035   //[0.00009 0.00035 0.00065 0.001 0.004 0.007 0.03]
-
 vec3 getShading(in vec3 color, in vec3 world, in vec2 surface, in vec3 normal) {
 
     mat4 shadowMVP = shadowProjection * shadowModelView;
