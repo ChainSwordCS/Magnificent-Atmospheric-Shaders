@@ -57,7 +57,4 @@ void main() {
 	#endif
 
 	gl_FragData[0] = vec4(color, 1.0);
-	#ifdef TDLAA
-	gl_FragData[1] = vec4(texture2D(colortex4, texCoord).rgb, 1.0);
-	#endif
 }

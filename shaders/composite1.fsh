@@ -41,10 +41,6 @@ void main() {
     if(getLandMask(depth)) color.rgb = getShading(color.rgb, world.xyz, surface.rg, fNormalize(texture2D(colortex1, texCoord).xyz * 2.0 - 1.0));
     //if(getLandMask(depth)) color.rgb = getShading2(color.rgb, world.xyz, surface.rg);
 
-    color = mix(color, texture2D(colortex6, texCoord), texture2D(colortex7, texCoord).r);
-
-    color.rgb = pow(color.rgb, vec3(1.0 / 2.2));
-
 	 /* DRAWBUFFERS:01 */
 
     gl_FragData[0] = color;

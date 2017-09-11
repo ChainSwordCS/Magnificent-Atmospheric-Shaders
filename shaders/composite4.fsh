@@ -14,7 +14,7 @@ float linearizeDepth(float depth) {
 
 vec3 DOF() {
     float focus = linearizeDepth(centerDepthSmooth);
-    float depth = linearizeDepth(texture2D(depthtex0, texCoord).r);
+    float depth = linearizeDepth(texture2D(depthtex1, texCoord).r);
     float coc = Aperture * (abs(depth - focus) / abs(depth)) * ((Aperture * gbufferProjection[1].y) / abs(focus - (Aperture * gbufferProjection[1].y)));
 
     vec3 result = vec3(0.0);

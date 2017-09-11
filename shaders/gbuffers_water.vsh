@@ -13,6 +13,10 @@ varying vec4 tint;
 varying vec3 normal;
 varying vec3 world;
 
+varying float idData;
+
+attribute vec4 mc_Entity;
+
 void main() {
 
     gl_Position = transMAD(gl_ModelViewMatrix, gl_Vertex.xyz).xyzz;
@@ -43,4 +47,6 @@ void main() {
     timeVector.z = 1.0 - (timeVector.x + timeVector.y);
     // MORNING
     timeVector.w = 1.0 - ((1.0 - clamp01(pow2(max0(noonNight.x) * 4.0))) + (1.0 - clamp01(pow(max0(noonNight.y) * 4.0, 128.0))));
+
+    idData = mc_Entity.x / 255.0;
 }

@@ -8,17 +8,17 @@
 #define STEPS 2	//[2 4 6 8 10 12 14 16 18]
 
 #include "lib/light/volumetric_light.glsl"
-#include "lib/postprocess/dlaa_1.glsl"
+
+
 
 void main() {
-	/* DRAWBUFFERS:314 */
+	/* DRAWBUFFERS:014 */
 
-	#ifdef TDLAA
-	#include "lib/postprocess/dlaa_2.glsl"
-	gl_FragData[0] = aaResult;
-	#else
-	gl_FragData[0] = texture2D(colortex0, texCoord);
-	#endif
+	vec4 color = texture2D(colortex0, texCoord.st);
+
+    color = mix(color, texture2D(colortex6, texCoord), texture2D(colortex7, texCoord).r);
+
+    color.rgb = pow(color.rgb, vec3(1.0 / 2.2));
 
 	#ifdef VolumetricLight
 	gl_FragData[1] = vec4(VL(), 1.0);

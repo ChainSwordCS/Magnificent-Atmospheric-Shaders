@@ -21,6 +21,8 @@ varying vec3 normal;
 varying vec4 tint;
 varying vec3 world;
 
+varying float idData;
+
 void main() {
 
 vec4 color = texture2D(tex, texCoord.st);
@@ -31,7 +33,8 @@ color.rgb = getShading(color.rgb, world.xyz, lmcoord, normal);
 
 color *= tint;
 
-/* DRAWBUFFERS:67 */
+/* DRAWBUFFERS:672 */
 gl_FragData[0] = color;
 gl_FragData[1] = vec4(color.a);
+gl_FragData[2] = vec4(lmcoord, idData, 1.0);
 }
