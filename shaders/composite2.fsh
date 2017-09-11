@@ -20,6 +20,7 @@ void main() {
 
     color.rgb = pow(color.rgb, vec3(1.0 / 2.2));
 
+	gl_FragData[0] = vec4(color);
 	#ifdef VolumetricLight
 	gl_FragData[1] = vec4(VL(), 1.0);
 	#else
